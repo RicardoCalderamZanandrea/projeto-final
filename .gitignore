@@ -1,0 +1,23 @@
+# Python bytecode and test/tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local databases and exports (may contain employee/RFID data)
+*.db
+*.sqlite
+*.sqlite3
+access_events.csv
+
+# Local Flask instance data
+instance/
+
+# macOS
+.DS_Store

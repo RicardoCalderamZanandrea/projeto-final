@@ -1,0 +1,6 @@
+timestamp,employee_id,employee_name,tag,type,outcome
+2026-10-26T09:00:00+00:00,EMP001,Ada,TAG-ADA,entry,granted
+2026-10-26T10:15:00+00:00,EMP002,Bea,TAG-BEA,access_denied,denied
+2026-10-26T11:00:00+00:00,,Unknown,TAG-UNKNOWN,unknown_tag,denied
+2026-10-26T12:00:00+00:00,EMP001,Ada,TAG-ADA,exit,granted
+2026-10-26T14:30:00+00:00,EMP002,Bea,TAG-BEA,access_denied,denied

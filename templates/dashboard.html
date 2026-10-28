@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Security room | Access monitor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">ACCESS CONTROL</p>
+      <h1>Security room</h1>
+    </div>
+    <form action="{{ url_for('logout') }}" method="post">
+      <button class="button-secondary" type="submit">Log out</button>
+    </form>
+  </header>
+
+  <main class="dashboard">
+    <section class="card">
+      <h2>Add employee</h2>
+      <form id="employee-form" class="form-grid">
+        <label>Name<input name="name" required></label>
+        <label>Employee ID<input name="employee_id" required></label>
+        <label>RFID tag<input name="tag" required></label>
+        <label>Role<input name="role"></label>
+        <label class="checkbox-label"><input name="allowed" type="checkbox"> Room access</label>
+        <button type="submit">Add employee</button>
+      </form>
+      <p id="employee-message" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <h2>Employees</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Employee ID</th><th>RFID</th><th>Role</th><th>Access</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="employees"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Live monitor</h2>
+      <p><strong>Currently inside:</strong> <span id="occupancy">Loading…</span></p>
+      <a href="{{ url_for('export_csv') }}">Download access events CSV</a>
+      <pre id="events" class="event-log" aria-live="polite"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Scan simulator</h2>
+      <p>Use an employee's RFID value to test entry, exit, or denial behavior without the physical reader.</p>
+      <form id="scan-form" class="inline-form">
+        <label for="scan-tag">RFID tag</label>
+        <input id="scan-tag" name="tag" required>
+        <button type="submit">Scan</button>
+      </form>
+      <pre id="scan-result" class="scan-result" role="status" aria-live="polite"></pre>
+    </section>
+  </main>
+</body>
+</html>
